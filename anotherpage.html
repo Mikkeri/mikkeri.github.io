@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+  <head>
+    <title>Miikka's super site of excitement - page 2</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+<body>
+<div id="wrap">
+  <div id="header">
+  <img src="images/banner.jpg" alt="Header image">
+  </div>
+  <div id="topmenu">
+	<ul>
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="anotherpage.html" >Another page</a></li>
+  </ul>
+  </div>
+  <h1>Miikka's bestest site 2</h1>
+  <table>
+  <tr>
+  <th>Hello</th>
+  <th>This</th>
+  <th>Is</th>
+  <th>Table</th>
+  </tr>
+  <tr>
+  <th>Such</th>
+  <th>Cool</th>
+  <th>Much</th>
+  <th>Wow</th>
+  </tr>
+  </table>
+  
+  <p>Geolocation thingy:<br>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Push this</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+function sendStuff(){
+	
+	var name = document.getElementById("name").value;
+	if(name.length <= 2){
+		alert("Name too short")
+	}else if(name.length > 2){
+		var lastname = document.getElementById("lastname").value;
+		if(lastname.length <= 2){
+			alert("Lastname too short")
+		}else if(lastname.length > 2){
+			alert("Thx "+name+" "+lastname+"!\nIt's not going to send it to anywhere tho... :D")
+		}
+	}
+	//alert(name.length);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+<p>Youtube embed:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pGwgR1F6hxk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<br>
+Submit your name:<br>
+Your Name: <input type="text" id="name" name="name" required>
+Your Lastname: <input type="text" id="lastname" name="lastname" required>
+<button onclick="sendStuff()">Push to send</button><br><br>
+<p>Drag the image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="images/ukko.png" draggable="true" ondragstart="drag(event)" width="50" height="50">
+  <div id="footer">
+  <p>This is a footer.</p>
+  </div>
+  </div> 
+</body>
+</html>
