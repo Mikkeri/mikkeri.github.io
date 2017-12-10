@@ -1,6 +1,7 @@
 body{
    background-image: url("bg.jpg");
    background-repeat: repeat;
+	background-color:#000000;
 }
 #wrap{
  width:850px;
